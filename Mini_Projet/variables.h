@@ -2,7 +2,7 @@
 
 #define MAX 100 
 
-int Id ; 
+int Id[MAX] ; 
 char Avion_Model[MAX][30];
 int capacite[MAX];
 char status[MAX][30];
