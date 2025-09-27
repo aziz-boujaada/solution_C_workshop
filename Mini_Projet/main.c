@@ -7,9 +7,10 @@ int main(){
 
     
     
-    int choice ;
+    int menu_choice ;
+    int choice_recherch;
     do{
-        
+      
         printf(" ============ GESTION D UN PARC D AVION ============\n");
         printf("            ---------> MENU <----------            \n");
         printf("1- Ajouter un avion (ou plusieurs).\n");
@@ -22,10 +23,10 @@ int main(){
         printf("______________________________\n");
         
         printf("Enter Your choice :");
-        scanf("%d" , &choice);
+        scanf("%d" , &menu_choice);
        
        
-       switch(choice){
+       switch(menu_choice){
            
            case 1 :
            Ajouter_Avion() ;
@@ -42,11 +43,35 @@ int main(){
            case 4 :
            Afficher_Avion() ;
            break;
+
+           case 5 :
+
+           printf("1- rechercher par ID\n");
+           printf("1- rechercher par Model\n");
+           printf("3- return a la menu principal\n");
+          
+           printf("entre votre choix pour rechercher :");
+           scanf("%d" , &choice_recherch);
+
+           switch(choice_recherch){
+            case 1 : 
+            Rechercher_ID();
+            break;
+
+            case 2 :
+            Rechercher_Par_Model();
+            break;
+
+            case 3 : break;
+
+            default : printf("choix invalid");
+           }
+           break;
         }
         
         
         
-    }while(choice !=0 );
+    }while(menu_choice !=0 );
 
 
 

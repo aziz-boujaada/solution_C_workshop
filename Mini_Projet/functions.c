@@ -3,7 +3,7 @@
 #include <string.h>
 #include "variables.h"
 
-nbr_total_avion = 0;
+nbr_total_avion = 0 ;
 int choice_status;
 int Search_Id;
 void Ajouter_Avion()
@@ -156,7 +156,7 @@ void Supprimer_Avion()
             for (int j = i; j < nbr_total_avion - 1; j++)
             {
                 strcpy(Avion_Model[j], Avion_Model[j + 1]);
-                capacite[j] = capacite[j];
+                capacite[j] = capacite[j+1];
                 strcpy(status[j], status[j + 1]);
                 strcpy(Date_Entre[j], Date_Entre[j + 1]);
             }
@@ -173,4 +173,54 @@ void Supprimer_Avion()
 }
 
 
+void Rechercher_ID(){
+    int found = 0;
+    printf("===================== RECHERCHER PAR ID ==================\n");
+    printf("enter ID par rechercher : ");
+    scanf("%d"  , &Search_Id);
 
+for (int i = 0 ; i < nbr_total_avion ; i++)
+{
+    if(Search_Id == Id[i]){
+       found = 1 ; 
+        printf("Avion : %d\n", i + 1);
+            printf(" ID d Avion  :%d \n", Id[i]);
+            printf("model de avion : %s\n", Avion_Model[i]);
+            printf("capacitie de avion : %d \n", capacite[i]);
+            printf("statu d avion : %s\n", status[i]);
+            printf("date de entrer de avion :  %s\n", Date_Entre[i]);
+            printf("____________________________________________________________\n");
+    }
+
+    if(!found){
+        printf("Pas d Avion avec cet ID !!!\n");
+    }
+}
+
+}
+
+void Rechercher_Par_Model(){
+int found = 0 ; 
+
+char Search_model[25];
+printf("Entrer la model de avion pour rechercher :");
+scanf(" %[^\n]" , Search_model);
+
+for(int i = 0 ; i < nbr_total_avion ; i++)
+{
+    if(strcmp(Search_model , Avion_Model[i]) == 0){
+        found = 1;
+         printf("Avion : %d\n", i + 1);
+            printf("ID d Avion  :%d \n", Id[i]);
+            printf("model de avion : %s\n", Avion_Model[i]);
+            printf("capacitie de avion : %d \n", capacite[i]);
+            printf("statu d avion : %s\n", status[i]);
+            printf("date de entrer de avion :  %s\n", Date_Entre[i]);
+            printf("____________________________________________________________\n");
+    }
+
+    if(!found){
+         printf("Pas d Avion avec cet Model !!!\n");
+    }
+}
+}
