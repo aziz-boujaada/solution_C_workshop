@@ -5,6 +5,7 @@
 
 nbr_total_avion = 0;
 int choice_status;
+int Search_Id;
 void Ajouter_Avion()
 {
 
@@ -90,7 +91,6 @@ void Afficher_Avion()
 void Modifier_Avion()
 {
 
-    int Search_Id;
     printf("Enter une Id pour rechercher : ");
     scanf("%d", &Search_Id);
 
@@ -105,7 +105,7 @@ void Modifier_Avion()
             printf("entrer la capacite de avion  :");
             scanf("%d", &capacite[i]);
 
-            printf(" la status de avion  :");
+            printf(" la status de avion  :\n");
 
             printf("1- Disponible\n");
             printf("2- En maintenance\n");
@@ -138,3 +138,39 @@ void Modifier_Avion()
         }
     }
 }
+
+void Supprimer_Avion()
+{
+
+    int found = 0 ;
+    printf("============================== SUPPRIMER UN AVION ================================\n");
+
+    printf("enter ID pour suppremer un avion : ");
+    scanf("%d", &Search_Id);
+
+    for (int i = 0; i < nbr_total_avion; i++)
+    {
+        if (Search_Id == Id[i])
+        found = 1;
+        {
+            for (int j = i; j < nbr_total_avion - 1; j++)
+            {
+                strcpy(Avion_Model[j], Avion_Model[j + 1]);
+                capacite[j] = capacite[j];
+                strcpy(status[j], status[j + 1]);
+                strcpy(Date_Entre[j], Date_Entre[j + 1]);
+            }
+
+            printf("Avion suppremr avec successe\n");
+            break;
+        }
+        if(!found)
+        {
+            printf("Pas d Avion avec cet ID !!!\n");
+        }
+    }
+    nbr_total_avion--;
+}
+
+
+

@@ -36,6 +36,10 @@ int main(){
            break;
 
            case 3 :
+           Supprimer_Avion() ;
+           break;
+
+           case 4 :
            Afficher_Avion() ;
            break;
         }
