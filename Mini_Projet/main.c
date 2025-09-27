@@ -47,7 +47,7 @@ int main(){
            case 5 :
 
            printf("1- rechercher par ID\n");
-           printf("1- rechercher par Model\n");
+           printf("2- rechercher par Model\n");
            printf("3- return a la menu principal\n");
           
            printf("entre votre choix pour rechercher :");
@@ -67,6 +67,8 @@ int main(){
             default : printf("choix invalid");
            }
            break;
+
+           default : printf("choix invalid !!!!!\n");
         }
         
         
