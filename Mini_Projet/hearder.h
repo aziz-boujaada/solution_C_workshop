@@ -1,10 +1,10 @@
 #include<stdio.h>
 #include "functions.c" 
-#include "variables.h"
+
 void Ajouter_Avion();
 void  Afficher_Avion();
 void Modifier_Avion();
 void Supprimer_Avion();
-void Rechercher_ID();
-void Rechercher_Par_Model();
+int Rechercher_ID();
+int Rechercher_Par_Model();
     

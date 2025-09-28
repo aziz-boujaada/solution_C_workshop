@@ -3,39 +3,40 @@
 #include <string.h>
 #include "variables.h"
 
-nbr_total_avion = 0;
+
 int choice_status;
 int Search_Id;
+int count_ID = 1;
 void Ajouter_Avion()
 {
 
     int ajout;
-    int count_Id = nbr_total_avion;
-    printf("========== > AJOUTER UN AVION =========\n");
+   
+    printf(YELLOW"========== > AJOUTER UN AVION =========\n"RESET);
 
-    printf("enter nombre  des avion pour : ");
+    printf(CYAN"enter nombre  des avion pour : "RESET);
     scanf("%d", &ajout);
-    printf("____________________________________________\n");
+    printf(YELLOW"____________________________________________\n" RESET);
 
     for (int i = nbr_total_avion; i < nbr_total_avion + ajout; i++)
     {
 
-        Id[i] = ++count_Id;
+        Id[i] = count_ID;
 
-        printf("entrer la model de avion  :");
+        printf(CYAN"entrer la model de avion  :"RESET);
         scanf(" %[^\n]", Avion_Model[i]);
 
-        printf("entrer la capacite de avion  :");
+        printf(CYAN"entrer la capacite de avion  :"RESET);
         scanf("%d", &capacite[i]);
 
-        printf(" la status de avion  :\n");
+        printf(CYAN" la status de avion  :\n"RESET);
 
-        printf("1- Disponible\n");
-        printf("2- En maintenance\n");
-        printf("3- En vol\n");
-        printf("0- return a menu  principal\n");
+        printf(BLUE"1- Disponible\n"RESET);
+        printf(BLUE"2- En maintenance\n"RESET);
+        printf(BLUE"3- En vol\n"RESET);
+        printf(BLUE"0- return a menu  principal\n"RESET);
 
-        printf("enter votre statu:\n");
+        printf(CYAN"enter votre statu:\n"RESET);
         scanf("%d", &choice_status);
 
         switch (choice_status)
@@ -52,15 +53,17 @@ void Ajouter_Avion()
         case 0:
             break;
         default:
-            printf("choix invalid !!");
+            printf(RED"choix invalid !!"RESET);
         }
 
-        printf("entrer la date de entrer  d un avion  :");
+        printf(CYAN"entrer la date de entrer  d un avion  :"RESET);
         scanf(" %[^\n]", Date_Entre[i]);
-         printf("____________________________________________________________\n");
-        printf("Avion avec ID %d et la model %s Ajouter avec success \n" , Id[i] , Avion_Model[i]);
+         printf(YELLOW"____________________________________________________________\n"RESET);
+        printf(GREEN"Avion avec ID %d et la model %s Ajouter avec success \n"RESET , Id[i] , Avion_Model[i]);
 
-        printf("____________________________________________________________\n");
+
+        printf(YELLOW"____________________________________________________________\n"RESET);
+        ++count_ID;
     }
 
     nbr_total_avion += ajout;
@@ -71,22 +74,22 @@ void Afficher_Avion()
 
     if (nbr_total_avion == 0)
     {
-        printf("Pas des Avion !!!\n");
+        printf(RED"Pas des Avion !!!\n"RESET);
     }
     else
     {
 
-        printf("======================= TOUT LES AVION ======================\n");
+        printf(YELLOW"======================= TOUT LES AVION ======================\n"RESET);
 
         for (int i = 0; i < nbr_total_avion; i++)
         {
-            printf("Avion : %d\n", i + 1);
-            printf(" ID d Avion  :%d \n", Id[i]);
-            printf("model de avion : %s\n", Avion_Model[i]);
-            printf("capacitie de avion : %d \n", capacite[i]);
-            printf("statu d avion : %s\n", status[i]);
-            printf("date de entrer de avion :  %s\n", Date_Entre[i]);
-            printf("____________________________________________________________\n");
+            printf(MAGENTA"Avion : %d\n"RESET, i + 1);
+            printf(MAGENTA"ID d Avion  :%d \n"RESET, Id[i]);
+            printf(MAGENTA"model de avion : %s\n"RESET, Avion_Model[i]);
+            printf(MAGENTA"capacitie de avion : %d \n"RESET, capacite[i]);
+            printf(MAGENTA"statu d avion : %s\n"RESET, status[i]);
+            printf(MAGENTA"date de entrer de avion :  %s\n"RESET, Date_Entre[i]);
+            printf(YELLOW"____________________________________________________________\n"RESET);
         }
     }
 }
@@ -96,7 +99,7 @@ void Modifier_Avion()
     int found = 0;
     int choice_modification;
 
-    printf("Enter une Id pour Modifier : ");
+    printf(CYAN"Enter une Id pour Modifier : "RESET);
     scanf("%d", &Search_Id);
 
     for (int i = 0; i < nbr_total_avion; i++)
@@ -104,37 +107,37 @@ void Modifier_Avion()
         if (Search_Id == Id[i])
         {
            found = 1;
-            printf("  ____________________________________\n");
-            printf(" |1-Modifier la model d avion :\n ");
-            printf(" |2-Modifier la capacite d avion :\n");
-            printf(" |3-Modifier la statu d avion :\n ");
-            printf(" |4-Modifier Tout les fromation :\n ");
-            printf(" |____________________________________\n");
+            printf(BLUE"  ____________________________________\n"RESET);
+            printf(BLUE" |1-Modifier la model d avion :\n "RESET);
+            printf(BLUE" |2-Modifier la capacite d avion :\n"RESET);
+            printf(BLUE" |3-Modifier la statu d avion :\n "RESET);
+            printf(BLUE" |4-Modifier Tout les fromation :\n "RESET);
+            printf(BLUE" |____________________________________\n"RESET);
 
-            printf("enter votre choix pour modifier :");
+            printf(CYAN"enter votre choix pour modifier :"RESET);
             scanf("%d", &choice_modification);
 
             switch (choice_modification)
             {
             case 1:
-                printf("entrer la model de avion  :");
+                printf(CYAN"entrer la model de avion  :"RESET);
                 scanf(" %[^\n]", Avion_Model[i]);
                 break;
 
             case 2:
-                printf("entrer la capacite de avion  :");
+                printf(CYAN"entrer la capacite de avion  :"RESET);
                 scanf("%d", &capacite[i]);
                 break;
 
             case 3:
-                printf(" la status de avion  :\n");
+                printf(BLUE" la status de avion  :\n"RESET);
 
-                printf("1- Disponible\n");
-                printf("2- En maintenance\n");
-                printf("3- En vol\n");
-                printf("0- return a menu  principal\n");
+                printf(BLUE"1- Disponible\n"RESET);
+                printf(BLUE"2- En maintenance\n"RESET);
+                printf(BLUE"3- En vol\n"RESET);
+                printf(BLUE"0- return a menu  principal\n"RESET);
 
-                printf("enter votre statu:\n");
+                printf(CYAN"enter votre statu:\n"RESET);
                 scanf("%d", &choice_status);
 
                 switch (choice_status)
@@ -151,24 +154,24 @@ void Modifier_Avion()
                 case 0:
                     break;
                 default:
-                    printf("choix invalid !!");
+                    printf(RED"choix invalid !!"RESET);
                 }
                 break;
 
             case 4:
-                printf("entrer la model de avion  :");
+                printf(CYAN"entrer la model de avion  :"RESET);
                 scanf(" %[^\n]", Avion_Model[i]);
 
-                printf("entrer la capacite de avion  :");
+                printf(CYAN"entrer la capacite de avion  :"RESET);
                 scanf("%d", &capacite[i]);
 
-                printf("la status de avion  :\n");
+                printf(BLUE"la status de avion  :\n"RESET);
 
-                printf("1- Disponible\n");
-                printf("2- En maintenance\n");
-                printf("3- En vol\n");
+                printf(BLUE"1- Disponible\n"RESET);
+                printf(BLUE"2- En maintenance\n"RESET);
+                printf(BLUE"3- En vol\n"RESET);
 
-                printf("enter votre statu:\n");
+                printf(CYAN"enter votre statu:\n"RESET);
                 scanf("%d", &choice_status);
 
                 switch (choice_status)
@@ -192,7 +195,7 @@ void Modifier_Avion()
             Afficher_Avion();
         }
         if(!found){
-          printf("Pas d Avion avec cet ID !!!\n");
+          printf(RED"Pas d Avion avec cet ID !!!\n"RESET);
         }
     }
 }
@@ -213,6 +216,7 @@ void Supprimer_Avion()
         {
             for (int j = i; j < nbr_total_avion - 1; j++)
             {
+                
                 strcpy(Avion_Model[j], Avion_Model[j + 1]);
                 capacite[j] = capacite[j + 1];
                 strcpy(status[j], status[j + 1]);
@@ -230,7 +234,7 @@ void Supprimer_Avion()
     nbr_total_avion--;
 }
 
-void Rechercher_ID()
+int Rechercher_ID()
 {
     int found = 0;
     printf("===================== RECHERCHER PAR ID ==================\n");
@@ -263,7 +267,7 @@ void Rechercher_ID()
     }
 }
 
-void Rechercher_Par_Model()
+int Rechercher_Par_Model()
 {
     int found = 0;
 

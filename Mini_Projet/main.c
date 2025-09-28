@@ -1,6 +1,9 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include "hearder.h"
+
+
+
  
 int main(){
 
@@ -11,18 +14,18 @@ int main(){
     int choice_recherch;
     do{
        
-        printf(" ============ GESTION D UN PARC D AVION ============\n");
-        printf("            ---------> MENU <----------            \n");
-        printf("1- Ajouter un avion (ou plusieurs).\n");
-        printf("2- Modifier un avion (modele, capacite, statut).\n");
-        printf("3- Supprimer un avion..\n");
-        printf("4- Afficher la liste des avions\n");
-        printf("5- Rechercher un avion (par id ou par modele)\n");
-        printf("6- Exit \n");
+        printf(YELLOW"============ GESTION D UN PARC D AVION ============ \n" RESET);
+        printf(YELLOW"            ---------> MENU <----------            \n" RESET);
+        printf(BLUE"1- Ajouter un avion (ou plusieurs).\n"RESET);
+        printf(BLUE"2- Modifier un avion (modele, capacite, statut).\n"RESET);
+        printf(BLUE"3- Supprimer un avion..\n"RESET);
+        printf(BLUE"4- Afficher la liste des avions\n"RESET);
+        printf(BLUE"5- Rechercher un avion (par id ou par modele)\n"RESET);
+        printf(BLUE"6- Exit \n"RESET);
         
-        printf("______________________________\n");
+        printf(YELLOW"______________________________\n"RESET);
         
-        printf("Enter Your choice :");
+        printf(CYAN"Enter Your choice :" RESET);
         scanf("%d" , &menu_choice);
        
        
@@ -50,11 +53,11 @@ int main(){
 
            case 5 :
             system("cls");
-           printf("1- rechercher par ID\n");
-           printf("2- rechercher par Model\n");
-           printf("3- return a la menu principal\n");
+           printf(BLUE"1- rechercher par ID\n"RESET);
+           printf(BLUE"2- rechercher par Model\n"RESET);
+           printf(BLUE"3- return a la menu principal\n"RESET);
           
-           printf("entre votre choix pour rechercher :");
+           printf(CYAN"entre votre choix pour rechercher :"RESET);
            scanf("%d" , &choice_recherch);
 
            switch(choice_recherch){
@@ -68,13 +71,16 @@ int main(){
 
             case 3 : break;
 
-            default : printf("choix invalid");
+            default : printf(RED"choix invalid"RESET);
            }
            break;
 
            case 6 :break;
 
-           default : printf("choix invalid !!!!!\n");
+           default : printf(RED"choix invalid !!!!!\n"RESET
+        
+        
+        );
         }
         
         
