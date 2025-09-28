@@ -15,6 +15,7 @@ void Ajouter_Avion()
 
     printf("enter nombre  des avion pour : ");
     scanf("%d", &ajout);
+    printf("____________________________________________\n");
 
     for (int i = nbr_total_avion; i < nbr_total_avion + ajout; i++)
     {
@@ -27,7 +28,7 @@ void Ajouter_Avion()
         printf("entrer la capacite de avion  :");
         scanf("%d", &capacite[i]);
 
-        printf(" la status de avion  :");
+        printf(" la status de avion  :\n");
 
         printf("1- Disponible\n");
         printf("2- En maintenance\n");
@@ -56,8 +57,8 @@ void Ajouter_Avion()
 
         printf("entrer la date de entrer  d un avion  :");
         scanf(" %[^\n]", Date_Entre[i]);
-
-        printf("Avion avec ID %d Ajouter avec success\n" , Id[i]);
+         printf("____________________________________________________________\n");
+        printf("Avion avec ID %d et la model %s Ajouter avec success \n" , Id[i] , Avion_Model[i]);
 
         printf("____________________________________________________________\n");
     }
@@ -92,21 +93,23 @@ void Afficher_Avion()
 
 void Modifier_Avion()
 {
-
+    int found = 0;
     int choice_modification;
 
-    printf("Enter une Id pour rechercher : ");
+    printf("Enter une Id pour Modifier : ");
     scanf("%d", &Search_Id);
 
     for (int i = 0; i < nbr_total_avion; i++)
     {
         if (Search_Id == Id[i])
         {
-
-            printf("1-Modifier la model d avion :\n ");
-            printf("2-Modifier la capacite d avion :\n ");
-            printf("3-Modifier la statu d avion :\n ");
-            printf("4-Modifier Tout les fromation :\n ");
+           found = 1;
+            printf("  ____________________________________\n");
+            printf(" |1-Modifier la model d avion :\n ");
+            printf(" |2-Modifier la capacite d avion :\n");
+            printf(" |3-Modifier la statu d avion :\n ");
+            printf(" |4-Modifier Tout les fromation :\n ");
+            printf(" |____________________________________\n");
 
             printf("enter votre choix pour modifier :");
             scanf("%d", &choice_modification);
@@ -159,7 +162,7 @@ void Modifier_Avion()
                 printf("entrer la capacite de avion  :");
                 scanf("%d", &capacite[i]);
 
-                printf(" la status de avion  :\n");
+                printf("la status de avion  :\n");
 
                 printf("1- Disponible\n");
                 printf("2- En maintenance\n");
@@ -188,9 +191,8 @@ void Modifier_Avion()
 
             Afficher_Avion();
         }
-        else
-        {
-            printf("Pas d Avion avec cet ID !!!\n");
+        if(!found){
+          printf("Pas d Avion avec cet ID !!!\n");
         }
     }
 }

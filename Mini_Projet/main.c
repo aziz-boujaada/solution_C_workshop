@@ -10,7 +10,7 @@ int main(){
     int menu_choice ;
     int choice_recherch;
     do{
-      
+       
         printf(" ============ GESTION D UN PARC D AVION ============\n");
         printf("            ---------> MENU <----------            \n");
         printf("1- Ajouter un avion (ou plusieurs).\n");
@@ -29,23 +29,27 @@ int main(){
        switch(menu_choice){
            
            case 1 :
+           system("cls");
            Ajouter_Avion() ;
            break;
 
-           case 2 :  
+           case 2 : 
+           system("cls"); 
            Modifier_Avion() ;
            break;
 
            case 3 :
+           system("cls");
            Supprimer_Avion() ;
            break;
 
            case 4 :
+           system("cls");
            Afficher_Avion() ;
            break;
 
            case 5 :
-
+            system("cls");
            printf("1- rechercher par ID\n");
            printf("2- rechercher par Model\n");
            printf("3- return a la menu principal\n");
