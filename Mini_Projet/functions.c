@@ -57,6 +57,8 @@ void Ajouter_Avion()
         printf("entrer la date de entrer  d un avion  :");
         scanf(" %[^\n]", Date_Entre[i]);
 
+        printf("Avion avec ID %d Ajouter avec success\n" , Id[i]);
+
         printf("____________________________________________________________\n");
     }
 
@@ -91,6 +93,8 @@ void Afficher_Avion()
 void Modifier_Avion()
 {
 
+    int choice_modification;
+
     printf("Enter une Id pour rechercher : ");
     scanf("%d", &Search_Id);
 
@@ -98,39 +102,91 @@ void Modifier_Avion()
     {
         if (Search_Id == Id[i])
         {
-            Afficher_Avion();
-            printf("entrer la model de avion  :");
-            scanf(" %[^\n]", Avion_Model[i]);
 
-            printf("entrer la capacite de avion  :");
-            scanf("%d", &capacite[i]);
+            printf("1-Modifier la model d avion :\n ");
+            printf("2-Modifier la capacite d avion :\n ");
+            printf("3-Modifier la statu d avion :\n ");
+            printf("4-Modifier Tout les fromation :\n ");
 
-            printf(" la status de avion  :\n");
+            printf("enter votre choix pour modifier :");
+            scanf("%d", &choice_modification);
 
-            printf("1- Disponible\n");
-            printf("2- En maintenance\n");
-            printf("3- En vol\n");
-            printf("0- return a menu  principal\n");
-
-            printf("enter votre statu:\n");
-            scanf("%d", &choice_status);
-
-            switch (choice_status)
+            switch (choice_modification)
             {
             case 1:
-                strcpy(status[i], "Disponible");
+                printf("entrer la model de avion  :");
+                scanf(" %[^\n]", Avion_Model[i]);
                 break;
+
             case 2:
-                strcpy(status[i], "DEn maintenancee");
+                printf("entrer la capacite de avion  :");
+                scanf("%d", &capacite[i]);
                 break;
+
             case 3:
-                strcpy(status[i], "En vol");
+                printf(" la status de avion  :\n");
+
+                printf("1- Disponible\n");
+                printf("2- En maintenance\n");
+                printf("3- En vol\n");
+                printf("0- return a menu  principal\n");
+
+                printf("enter votre statu:\n");
+                scanf("%d", &choice_status);
+
+                switch (choice_status)
+                {
+                case 1:
+                    strcpy(status[i], "Disponible");
+                    break;
+                case 2:
+                    strcpy(status[i], "DEn maintenancee");
+                    break;
+                case 3:
+                    strcpy(status[i], "En vol");
+                    break;
+                case 0:
+                    break;
+                default:
+                    printf("choix invalid !!");
+                }
                 break;
-            case 0:
-                break;
-            default:
-                printf("choix invalid !!");
+
+            case 4:
+                printf("entrer la model de avion  :");
+                scanf(" %[^\n]", Avion_Model[i]);
+
+                printf("entrer la capacite de avion  :");
+                scanf("%d", &capacite[i]);
+
+                printf(" la status de avion  :\n");
+
+                printf("1- Disponible\n");
+                printf("2- En maintenance\n");
+                printf("3- En vol\n");
+
+                printf("enter votre statu:\n");
+                scanf("%d", &choice_status);
+
+                switch (choice_status)
+                {
+                case 1:
+                    strcpy(status[i], "Disponible");
+                    break;
+                case 2:
+                    strcpy(status[i], "DEn maintenancee");
+                    break;
+                case 3:
+                    strcpy(status[i], "En vol");
+                    break;
+                case 0:
+                    break;
+                default:
+                    printf("choix invalid !!");
+                }
             }
+
+            Afficher_Avion();
         }
         else
         {
@@ -179,11 +235,10 @@ void Rechercher_ID()
     printf("enter ID par rechercher : ");
     scanf("%d", &Search_Id);
 
-
-    if(nbr_total_avion == 0){
+    if (nbr_total_avion == 0)
+    {
         printf("Pas d avoins dans l airport !!!\n");
         return 0;
-
     }
     for (int i = 0; i < nbr_total_avion; i++)
     {
@@ -220,24 +275,23 @@ void Rechercher_Par_Model()
         return 0;
     }
 
-        for (int i = 0; i < nbr_total_avion; i++)
+    for (int i = 0; i < nbr_total_avion; i++)
+    {
+        if (strcmp(Search_model, Avion_Model[i]) == 0)
         {
-            if (strcmp(Search_model, Avion_Model[i]) == 0)
-            {
-                found = 1;
-                printf("Avion : %d\n", i + 1);
-                printf("ID d Avion  :%d \n", Id[i]);
-                printf("model de avion : %s\n", Avion_Model[i]);
-                printf("capacitie de avion : %d \n", capacite[i]);
-                printf("statu d avion : %s\n", status[i]);
-                printf("date de entrer de avion :  %s\n", Date_Entre[i]);
-                printf("____________________________________________________________\n");
-            }
-
-            if (!found)
-            {
-                printf("Pas d Avion avec cet Model !!!\n");
-            }
+            found = 1;
+            printf("Avion : %d\n", i + 1);
+            printf("ID d Avion  :%d \n", Id[i]);
+            printf("model de avion : %s\n", Avion_Model[i]);
+            printf("capacitie de avion : %d \n", capacite[i]);
+            printf("statu d avion : %s\n", status[i]);
+            printf("date de entrer de avion :  %s\n", Date_Entre[i]);
+            printf("____________________________________________________________\n");
         }
-    
+
+        if (!found)
+        {
+            printf("Pas d Avion avec cet Model !!!\n");
+        }
+    }
 }

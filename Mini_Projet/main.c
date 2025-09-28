@@ -68,12 +68,14 @@ int main(){
            }
            break;
 
+           case 6 :break;
+
            default : printf("choix invalid !!!!!\n");
         }
         
         
         
-    }while(menu_choice !=0 );
+    }while(menu_choice != 6);
 
 
 
