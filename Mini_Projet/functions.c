@@ -63,7 +63,7 @@ void Ajouter_Avion()
 
 
         printf(YELLOW"____________________________________________________________\n"RESET);
-        ++count_ID;
+        count_ID++;
     }
 
     nbr_total_avion += ajout;
@@ -194,9 +194,9 @@ void Modifier_Avion()
 
             Afficher_Avion();
         }
-        if(!found){
-          printf(RED"Pas d Avion avec cet ID !!!\n"RESET);
-        }
+    }
+    if(!found){
+      printf(RED"Pas d Avion avec cet ID !!!\n"RESET);
     }
 }
 
@@ -204,9 +204,9 @@ void Supprimer_Avion()
 {
 
     int found = 0;
-    printf("============================== SUPPRIMER UN AVION ================================\n");
+    printf(YELLOW"============================== SUPPRIMER UN AVION ================================\n"RESET);
 
-    printf("enter ID pour suppremer un avion : ");
+    printf(CYAN"enter ID pour suppremer un avion : "RESET);
     scanf("%d", &Search_Id);
 
     for (int i = 0; i < nbr_total_avion; i++)
@@ -223,13 +223,13 @@ void Supprimer_Avion()
                 strcpy(Date_Entre[j], Date_Entre[j + 1]);
             }
 
-            printf("Avion suppremr avec successe\n");
+            printf(GREEN"Avion suppremr avec successe\n"RESET);
             break;
         }
-        if (!found)
-        {
-            printf("Pas d Avion avec cet ID !!!\n");
-        }
+    }
+    if (!found)
+    {
+        printf(RED"Pas d Avion avec cet ID !!!\n"RESET);
     }
     nbr_total_avion--;
 }
@@ -237,13 +237,13 @@ void Supprimer_Avion()
 int Rechercher_ID()
 {
     int found = 0;
-    printf("===================== RECHERCHER PAR ID ==================\n");
-    printf("enter ID par rechercher : ");
+    printf(YELLOW"===================== RECHERCHER PAR ID ==================\n"RESET);
+    printf(CYAN"enter ID par rechercher : "RESET);
     scanf("%d", &Search_Id);
 
     if (nbr_total_avion == 0)
     {
-        printf("Pas d avoins dans l airport !!!\n");
+        printf(RED"Pas d avoins dans l airport !!!\n"RESET);
         return 0;
     }
     for (int i = 0; i < nbr_total_avion; i++)
@@ -251,19 +251,19 @@ int Rechercher_ID()
         if (Search_Id == Id[i])
         {
             found = 1;
-            printf("Avion : %d\n", i + 1);
-            printf(" ID d Avion  :%d \n", Id[i]);
-            printf("model de avion : %s\n", Avion_Model[i]);
-            printf("capacitie de avion : %d \n", capacite[i]);
-            printf("statu d avion : %s\n", status[i]);
-            printf("date de entrer de avion :  %s\n", Date_Entre[i]);
+            printf(MAGENTA"Avion : %d\n"RESET, i + 1);
+            printf(MAGENTA"ID d Avion  :%d \n"RESET, Id[i]);
+            printf(MAGENTA"model de avion : %s\n"RESET, Avion_Model[i]);
+            printf(MAGENTA"capacitie de avion : %d \n"RESET, capacite[i]);
+            printf(MAGENTA"statu d avion : %s\n"RESET, status[i]);
+            printf(MAGENTA"date de entrer de avion :  %s\n"RESET, Date_Entre[i]);
             printf("____________________________________________________________\n");
         }
 
-        if (!found)
-        {
-            printf("Pas d Avion avec cet ID !!!\n");
-        }
+    }
+    if (!found)
+    {
+        printf(RED"Pas d Avion avec cet ID !!!\n"RESET);
     }
 }
 
@@ -272,12 +272,12 @@ int Rechercher_Par_Model()
     int found = 0;
 
     char Search_model[25];
-    printf("Entrer la model de avion pour rechercher :");
+    printf(CYAN"Entrer la model de avion pour rechercher :"RESET);
     scanf(" %[^\n]", Search_model);
 
     if (nbr_total_avion == 0)
     {
-        printf("Pas d avoins dans l airport !!!\n");
+        printf(RED"Pas d avoins dans l airport !!!\n"RESET);
         return 0;
     }
 
@@ -286,18 +286,18 @@ int Rechercher_Par_Model()
         if (strcmp(Search_model, Avion_Model[i]) == 0)
         {
             found = 1;
-            printf("Avion : %d\n", i + 1);
-            printf("ID d Avion  :%d \n", Id[i]);
-            printf("model de avion : %s\n", Avion_Model[i]);
-            printf("capacitie de avion : %d \n", capacite[i]);
-            printf("statu d avion : %s\n", status[i]);
-            printf("date de entrer de avion :  %s\n", Date_Entre[i]);
-            printf("____________________________________________________________\n");
+            printf(MAGENTA"Avion : %d\n"RESET ,i + 1);
+            printf(MAGENTA"ID d Avion  :%d \n"RESET, Id[i]);
+            printf(MAGENTA"model de avion : %s\n"RESET, Avion_Model[i]);
+            printf(MAGENTA"capacitie de avion : %d \n"RESET, capacite[i]);
+            printf(MAGENTA"statu d avion : %s\n"RESET, status[i]);
+            printf(MAGENTA"date de entrer de avion :  %s\n"RESET, Date_Entre[i]);
+            printf(YELLOW"____________________________________________________________\n"RESET);
         }
 
-        if (!found)
-        {
-            printf("Pas d Avion avec cet Model !!!\n");
-        }
+    }
+    if (!found)
+    {
+        printf(RED"Pas d Avion avec cet Model !!!\n"RESET);
     }
 }

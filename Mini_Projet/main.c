@@ -8,13 +8,12 @@
 int main(){
 
 
-    
-    
+   
     int menu_choice ;
     int choice_recherch;
     do{
        
-        printf(YELLOW"============  GESTION D UN PARC D AVION  ============ \n" RESET);
+        printf(YELLOW"============   GESTION D UN PARC D AVION  ============ \n" RESET);
         printf(YELLOW"            ---------> MENU <----------            \n" RESET);
         printf(BLUE"1- Ajouter un avion (ou plusieurs).\n"RESET);
         printf(BLUE"2- Modifier un avion (modele, capacite, statut).\n"RESET);
