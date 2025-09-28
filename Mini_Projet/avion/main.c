@@ -59,10 +59,12 @@ int main(){
 
            switch(choice_recherch){
             case 1 : 
+            system("cls");
             Rechercher_ID();
             break;
 
             case 2 :
+            system("cls");
             Rechercher_Par_Model();
             break;
 

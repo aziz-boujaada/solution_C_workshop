@@ -1,11 +1,32 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "variables.h"
 
-nbr_total_avion = 0;
+
+#include<stdio.h>
+
+#define MAX 100 
+
+
+typedef struct {
+
+    int Id ; 
+    char Avion_Model[MAX][30];
+    int capacite;
+    char status[MAX][30];
+    char Date_Entre[MAX][30];
+}Avions_struct ;
+
+Avions_struct Avion[MAX] ;
+
+
+
+int nbr_total_avion = 0;
 int choice_status;
 int Search_Id;
+
+
 void Ajouter_Avion()
 {
 
@@ -20,13 +41,13 @@ void Ajouter_Avion()
     for (int i = nbr_total_avion; i < nbr_total_avion + ajout; i++)
     {
 
-        Id[i] = ++count_Id;
+    Avion[i].Id = ++count_Id;
 
         printf("entrer la model de avion  :");
-        scanf(" %[^\n]", Avion_Model[i]);
+        scanf(" %[^\n]", Avion[i].Avion_Model);
 
         printf("entrer la capacite de avion  :");
-        scanf("%d", &capacite[i]);
+        scanf("%d", &Avion[i].capacite);
 
         printf(" la status de avion  :\n");
 
@@ -41,13 +62,13 @@ void Ajouter_Avion()
         switch (choice_status)
         {
         case 1:
-            strcpy(status[i], "Disponible");
+            strcpy(Avion[i].status, "Disponible");
             break;
         case 2:
-            strcpy(status[i], "DEn maintenancee");
+            strcpy(Avion[i].status, "DEn maintenancee");
             break;
         case 3:
-            strcpy(status[i], "En vol");
+            strcpy(Avion[i].status, "En vol");
             break;
         case 0:
             break;
@@ -56,9 +77,9 @@ void Ajouter_Avion()
         }
 
         printf("entrer la date de entrer  d un avion  :");
-        scanf(" %[^\n]", Date_Entre[i]);
+        scanf(" %[^\n]", Avion[i].Date_Entre);
          printf("____________________________________________________________\n");
-        printf("Avion avec ID %d et la model %s Ajouter avec success \n" , Id[i] , Avion_Model[i]);
+        printf("Avion avec ID %d et la model %s Ajouter avec success \n" , Avion[i].Id , Avion[i].Avion_Model);
 
         printf("____________________________________________________________\n");
     }
@@ -81,11 +102,11 @@ void Afficher_Avion()
         for (int i = 0; i < nbr_total_avion; i++)
         {
             printf("Avion : %d\n", i + 1);
-            printf(" ID d Avion  :%d \n", Id[i]);
-            printf("model de avion : %s\n", Avion_Model[i]);
-            printf("capacitie de avion : %d \n", capacite[i]);
-            printf("statu d avion : %s\n", status[i]);
-            printf("date de entrer de avion :  %s\n", Date_Entre[i]);
+            printf(" ID d Avion  :%d \n", Avion[i].Id);
+            printf("model de avion : %s\n", Avion[i].Avion_Model);
+            printf("capacitie de avion : %d \n",Avion[i].capacite);
+            printf("statu d avion : %s\n", Avion[i].status);
+            printf("date de entrer de avion :  %s\n", Avion[i].Date_Entre);
             printf("____________________________________________________________\n");
         }
     }
@@ -101,7 +122,7 @@ void Modifier_Avion()
 
     for (int i = 0; i < nbr_total_avion; i++)
     {
-        if (Search_Id == Id[i])
+        if (Search_Id == Avion[i].Id)
         {
            found = 1;
             printf("  ____________________________________\n");
@@ -118,12 +139,12 @@ void Modifier_Avion()
             {
             case 1:
                 printf("entrer la model de avion  :");
-                scanf(" %[^\n]", Avion_Model[i]);
+                scanf(" %[^\n]", Avion[i].Avion_Model);
                 break;
 
             case 2:
                 printf("entrer la capacite de avion  :");
-                scanf("%d", &capacite[i]);
+                scanf("%d", &Avion[i].capacite);
                 break;
 
             case 3:
@@ -140,13 +161,13 @@ void Modifier_Avion()
                 switch (choice_status)
                 {
                 case 1:
-                    strcpy(status[i], "Disponible");
+                    strcpy(Avion[i].status, "Disponible");
                     break;
                 case 2:
-                    strcpy(status[i], "DEn maintenancee");
+                    strcpy(Avion[i].status, "DEn maintenancee");
                     break;
                 case 3:
-                    strcpy(status[i], "En vol");
+                    strcpy(Avion[i].status, "En vol");
                     break;
                 case 0:
                     break;
@@ -157,10 +178,10 @@ void Modifier_Avion()
 
             case 4:
                 printf("entrer la model de avion  :");
-                scanf(" %[^\n]", Avion_Model[i]);
+                scanf(" %[^\n]", Avion[i].Avion_Model);
 
                 printf("entrer la capacite de avion  :");
-                scanf("%d", &capacite[i]);
+                scanf("%d", &Avion[i].capacite);
 
                 printf("la status de avion  :\n");
 
@@ -174,13 +195,13 @@ void Modifier_Avion()
                 switch (choice_status)
                 {
                 case 1:
-                    strcpy(status[i], "Disponible");
+                    strcpy(Avion[i].status, "Disponible");
                     break;
                 case 2:
-                    strcpy(status[i], "DEn maintenancee");
+                    strcpy(Avion[i].status, "DEn maintenancee");
                     break;
                 case 3:
-                    strcpy(status[i], "En vol");
+                    strcpy(Avion[i].status, "En vol");
                     break;
                 case 0:
                     break;
@@ -191,9 +212,10 @@ void Modifier_Avion()
 
             Afficher_Avion();
         }
-        if(!found){
-          printf("Pas d Avion avec cet ID !!!\n");
-        }
+    }
+    if(!found){
+      printf("Pas d Avion avec cet ID !!!\n");
+      
     }
 }
 
@@ -208,15 +230,12 @@ void Supprimer_Avion()
 
     for (int i = 0; i < nbr_total_avion; i++)
     {
-        if (Search_Id == Id[i])
+        if (Search_Id == Avion[i].Id)
             found = 1;
         {
             for (int j = i; j < nbr_total_avion - 1; j++)
             {
-                strcpy(Avion_Model[j], Avion_Model[j + 1]);
-                capacite[j] = capacite[j + 1];
-                strcpy(status[j], status[j + 1]);
-                strcpy(Date_Entre[j], Date_Entre[j + 1]);
+               Avion[j] = Avion[j+1];
             }
 
             printf("Avion suppremr avec successe\n");
@@ -244,15 +263,16 @@ void Rechercher_ID()
     }
     for (int i = 0; i < nbr_total_avion; i++)
     {
-        if (Search_Id == Id[i])
+        if (Search_Id == Avion[i].Id)
         {
             found = 1;
+            printf("-------------- avion avec Id %d trouver ---------------\n" ,Avion[i].Id);
             printf("Avion : %d\n", i + 1);
-            printf(" ID d Avion  :%d \n", Id[i]);
-            printf("model de avion : %s\n", Avion_Model[i]);
-            printf("capacitie de avion : %d \n", capacite[i]);
-            printf("statu d avion : %s\n", status[i]);
-            printf("date de entrer de avion :  %s\n", Date_Entre[i]);
+            printf(" ID d Avion  :%d \n", Avion[i].Id);
+            printf("model de avion : %s\n", Avion[i].Avion_Model);
+            printf("capacitie de avion : %d \n",Avion[i].capacite);
+            printf("statu d avion : %s\n", Avion[i].status);
+            printf("date de entrer de avion :  %s\n", Avion[i].Date_Entre);
             printf("____________________________________________________________\n");
         }
 
@@ -279,15 +299,16 @@ void Rechercher_Par_Model()
 
     for (int i = 0; i < nbr_total_avion; i++)
     {
-        if (strcmp(Search_model, Avion_Model[i]) == 0)
+        if (strcmp(Search_model, Avion[i].Avion_Model) == 0)
         {
             found = 1;
+            printf("-------------- avion avec Id %d trouver ---------------\n" ,Avion[i].Id);
             printf("Avion : %d\n", i + 1);
-            printf("ID d Avion  :%d \n", Id[i]);
-            printf("model de avion : %s\n", Avion_Model[i]);
-            printf("capacitie de avion : %d \n", capacite[i]);
-            printf("statu d avion : %s\n", status[i]);
-            printf("date de entrer de avion :  %s\n", Date_Entre[i]);
+            printf("ID d Avion  :%d \n", Avion[i].Id);
+            printf("model de avion : %s\n", Avion[i].Avion_Model);
+            printf("capacitie de avion : %d \n",Avion[i].capacite);
+            printf("statu d avion : %s\n", Avion[i].status);
+            printf("date de entrer de avion :  %s\n", Avion[i].Date_Entre);
             printf("____________________________________________________________\n");
         }
 
