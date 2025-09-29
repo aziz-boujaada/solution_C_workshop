@@ -41,7 +41,7 @@ void Ajouter_Avion()
     for (int i = nbr_total_avion; i < nbr_total_avion + ajout; i++)
     {
 
-    Avion[i].Id = ++count_Id;
+    Avion[i].Id = count_Id++;
 
         printf("entrer la model de avion  :");
         scanf(" %[^\n]", Avion[i].Avion_Model);
