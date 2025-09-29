@@ -7,11 +7,15 @@
 #define RESET   "\033[0m"
 #define MAX 100 
 
+typedef struct {
 
-int Id[MAX] ; 
-char Avion_Model[MAX][30];
-int capacite[MAX];
-char status[MAX][30];
-char Date_Entre[MAX][30];
+    int Id ; 
+    char Avion_Model[30];
+    int capacite;
+    char status[30];
+    char Date_Entre[30];
+}Avions_struct ;
+
+Avions_struct Avion[MAX] ;
 
 int nbr_total_avion = 0  ; 
